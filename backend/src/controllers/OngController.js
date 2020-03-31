@@ -1,3 +1,5 @@
+const generateUniqueId = require("../utils/genereteUniqueId");
+
 // importa o arquivo para comunicar com banco de dados
 const connection = require("../database/connection");
 
@@ -15,7 +17,7 @@ module.exports = {
     const { name, email, whatsapp, cidade, uf } = request.body;
 
     // vai gerar 4 Bytes, aleatórios, de caracteres hexadecimais
-    const id = crypto.randomBytes(4).toString("HEX");
+    const id = generateUniqueId();
 
     // utilizando o connection passo a tabela como parametro e chamo o método insert
     // O método insert pode demorar um pouco para retornar, dessa forma utilizamos o async

@@ -4,6 +4,8 @@ const express = require("express");
 // modulo que determina quem vai poder acessar nossa aplicação (npm install cors)
 const cors = require("cors");
 
+const { errors } = require("celebrate");
+
 // importa as rotas, foi colocado o './' para que ele entenda que estou passando um 
 // arquivo e não um pacote, como por exemplo o express
 const routes = require("./routes");
@@ -17,6 +19,8 @@ app.use(express.json());
 
 // informo ao express para usar as rotas informadas na constante routes
 app.use(routes);
+
+app.use(errors());
 
 /**
  * Rota / Recurso
@@ -52,4 +56,4 @@ app.use(routes);
 
 
 
-app.listen(3333);
+module.exports = app;
